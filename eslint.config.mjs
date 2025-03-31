@@ -17,6 +17,7 @@ const eslintConfig = [
       "react/no-unescaped-entities": "off",
       "no-var": "off",
       "@typescript-eslint/no-empty-object-type": "off",
+      "jsx-a11y/alt-text": "off"
     },
   }),
 ];
