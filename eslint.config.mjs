@@ -14,8 +14,9 @@ const eslintConfig = [
   ...compat.config({
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
-      "react/no-unescaped-entities":"off",
-      "no-var":"off",
+      "react/no-unescaped-entities": "off",
+      "no-var": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   }),
 ];

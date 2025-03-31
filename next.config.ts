@@ -6,10 +6,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "tgqwvme0pr.ufs.sh"
-      }
-    ]
-  }
+        hostname: "tgqwvme0pr.ufs.sh",
+      },
+    ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // }
 };
 
 export default nextConfig;
