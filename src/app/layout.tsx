@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const inter = Recursive({subsets: ["latin"]})
+const inter = Recursive({ subsets: ["latin"] });
 
 export const metadata = constructMetadata();
 

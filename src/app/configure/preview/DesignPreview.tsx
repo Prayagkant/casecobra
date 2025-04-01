@@ -19,9 +19,15 @@ import LoginModal from "@/components/LoginModal";
 const DesignPreview =  ({ configuration }: { configuration: Configuration }) => {
   const router = useRouter();
   const { id } = configuration;
-  const { getUser } = useKindeBrowserClient();
-  const user =  getUser();
-  // const { user } = useKindeBrowserClient();
+
+  const { user, isLoading } = useKindeBrowserClient();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      setIsAuthenticated(true);
+    }
+  }, [isLoading, user]);
   console.log(user);
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
@@ -58,11 +64,18 @@ const DesignPreview =  ({ configuration }: { configuration: Configuration }) => 
   });
 
   const handleCheckout = () => {
-    if (user) {
-      // create payment session
+    // if (user) {
+    //   // create payment session
+    //   createPaymentSession({ configId: id });
+    // } else {
+    //   // need to login
+    //   localStorage.setItem("configurationId", id);
+    //   setIsLoginModalOpen(true);
+    // }
+
+    if (isAuthenticated) {
       createPaymentSession({ configId: id });
     } else {
-      // need to login
       localStorage.setItem("configurationId", id);
       setIsLoginModalOpen(true);
     }
