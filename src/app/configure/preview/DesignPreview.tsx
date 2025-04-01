@@ -16,11 +16,13 @@ import { toast } from "sonner";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import LoginModal from "@/components/LoginModal";
 
-const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
+const DesignPreview =  ({ configuration }: { configuration: Configuration }) => {
   const router = useRouter();
   const { id } = configuration;
-  const { user } = useKindeBrowserClient();
   const { getUser } = useKindeBrowserClient();
+  const user =  getUser();
+  // const { user } = useKindeBrowserClient();
+  console.log(user);
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
@@ -62,7 +64,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     } else {
       // need to login
       localStorage.setItem("configurationId", id);
-      setIsLoginModalOpen(true)
+      setIsLoginModalOpen(true);
     }
   };
 

@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
 import OrderReceivedEmail from "@/components/emails/OrderReceivedEmail";
+import React from "react";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -86,7 +87,7 @@ export async function POST(req: Request) {
             street: shippingAddress!.line1!,
             state: shippingAddress!.state,
           },
-        }),
+        }) as React.ReactElement,
       });
     }
     return NextResponse.json({ result: event, ok: true });
